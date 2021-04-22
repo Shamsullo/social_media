@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # Local
     'users',
     'post',
+    'analytics',
 ]
 
 MIDDLEWARE = [
@@ -43,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'analytics.middleware.RequestTackerMiddleware',
 ]
 
 ROOT_URLCONF = 'social_network.urls'
@@ -132,5 +134,3 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN': True,
     'AUTH_HEADER_TYPES': ('JWT',),
 }
-
-AUTH_USER_MODEL = 'users.CustomUser'

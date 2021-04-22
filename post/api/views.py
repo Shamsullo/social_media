@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 
 from .serializers import PostSerializer, SinglePostAnalyticsSerializer
-from ..models import Post, PostLike
+from post.models import Post, PostLike
 
 
 class PostCreateView(generics.CreateAPIView):

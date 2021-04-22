@@ -7,6 +7,7 @@ urlpatterns = [
     path('api-auth/', include('djoser.urls')),
     path('api-auth/', include('djoser.urls.jwt')),
     path('api-post/', include('post.api.urls')),
+    path('api-analytics/', include('analytics.api.urls')),
 ]
 
 urlpatterns += doc_urls
