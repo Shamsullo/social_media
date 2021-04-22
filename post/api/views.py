@@ -48,14 +48,15 @@ class LikeView(APIView):
 
 
 class SinglePostAnalyticsView(generics.RetrieveAPIView):
-    """All the analytics of the post details will implemented here"""
+    """Single post analytics view by post id"""
     permission_classes = (IsAuthenticated,)
     serializer_class = SinglePostAnalyticsSerializer
     queryset = Post.objects.all()
 
 
 class PostsAnalyticsView(generics.ListAPIView):
-    permission_classes = ()
+    """All posts analytics view"""
+    permission_classes = (IsAuthenticated,)
     serializer_class = SinglePostAnalyticsSerializer
     queryset = Post.objects.all()
 

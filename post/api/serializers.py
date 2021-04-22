@@ -1,7 +1,6 @@
 from datetime import datetime
 from django.db.models import Count
 from rest_framework import serializers
-
 from ..models import Post, PostLike
 
 
@@ -34,10 +33,11 @@ class SinglePostAnalyticsSerializer(serializers.ModelSerializer):
         date_to = datetime.strptime(params['date_to'],
                                     '%Y-%m-%d').astimezone()
 
-        likes_by_day = PostLike.objects\
-            .filter(post=post, timestamp__gte=date_from, timestamp__lte=date_to)\
-            .values('timestamp__day')\
-            .annotate(likes=Count('timestamp__day'))\
+        likes_by_day = PostLike.objects \
+            .filter(post=post, timestamp__gte=date_from,
+                    timestamp__lte=date_to) \
+            .values('timestamp__day') \
+            .annotate(likes=Count('timestamp__day')) \
             .values('timestamp__date', 'likes')
 
         return likes_by_day
