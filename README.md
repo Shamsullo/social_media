@@ -1,4 +1,4 @@
-#### Beginning of API development for a Simple Social Media 
+## Beginning of API development for a Simple Social Media 
 
 Dear Starnavi Team,
 
