@@ -59,4 +59,3 @@ class PostsAnalyticsView(generics.ListAPIView):
     permission_classes = (IsAuthenticated,)
     serializer_class = SinglePostAnalyticsSerializer
     queryset = Post.objects.all()
-

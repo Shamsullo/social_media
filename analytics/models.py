@@ -2,9 +2,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
-# removing content type cause in this case I don't have to show who did what
-# if it will work then maybe i will think about how can fix user thing
-
 
 class RequestTracking(models.Model):
     """Table to save tracking the requests of users."""
