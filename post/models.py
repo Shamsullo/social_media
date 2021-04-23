@@ -17,11 +17,14 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name='post',
                                verbose_name=_('Post author'))
-    content = models.TextField(verbose_name=_('Post content'), blank=True, null=True)
+    content = models.TextField(verbose_name=_('Post content'), blank=True,
+                               null=True)
     likes = models.ManyToManyField(User, related_name='tweet_user', blank=True,
                                    through='PostLike')
-    image = models.FileField(verbose_name=_('Post Image'), upload_to='images/', blank=True, null=True)
-    timestamp = models.DateTimeField(verbose_name=_('Created date'), auto_now_add=True,)
+    image = models.FileField(verbose_name=_('Post Image'), upload_to='images/',
+                             blank=True, null=True)
+    timestamp = models.DateTimeField(verbose_name=_('Created date'),
+                                     auto_now_add=True, )
 
     class Meta:
         ordering = ['-id']

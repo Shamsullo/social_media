@@ -15,15 +15,19 @@ class PostTests(APITestCase):
     """Post creation and other post actions testing."""
 
     def setUp(self) -> None:
-        self.user = User.objects.create_user(username='testUser', password='somepassword')
+        self.user = User.objects.create_user(username='testUser',
+                                             password='somepassword')
         self.authenticate_user()
 
         Post.objects.create(author=self.user, content='first post from setUp')
 
     def authenticate_user(self):
         login_url = reverse('jwt-create')
-        response = self.client.post(login_url, {'username': 'testUser', 'password': 'somepassword'}, format='json')
-        self.client.credentials(HTTP_AUTHORIZATION='JWT ' + response.data['access'])
+        response = self.client.post(login_url, {'username': 'testUser',
+                                                'password': 'somepassword'},
+                                    format='json')
+        self.client.credentials(
+            HTTP_AUTHORIZATION='JWT ' + response.data['access'])
 
     def test_post_creation(self):
         """
@@ -63,7 +67,6 @@ class PostTests(APITestCase):
         self.assertEqual(my_like_instances_count, 0)
 
     def test_single_like_analytics(self):
-
         url = reverse('single_post_analytics', kwargs={'pk': 1})
         today = datetime.date.today()
         date_from = (today - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
